@@ -6,8 +6,10 @@ class nodo
 private:
 	int crrt, max;
 	nodo *L, *R;
+	int* array;
 public:
 	nodo(nodo *, nodo *, int);
+	nodo(nodo *, nodo *, int, int);
 	~nodo();
 
 	nodo *getL();
