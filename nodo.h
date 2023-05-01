@@ -1,3 +1,6 @@
+#ifndef Nodo_H
+#define Nodo_H
+
 class nodo
 {
 private:
@@ -15,3 +18,5 @@ public:
 	void setCrrt(int n);
 	void crrtPP();
 };
+
+#endif
