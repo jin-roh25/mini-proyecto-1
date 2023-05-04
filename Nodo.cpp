@@ -1,21 +1,21 @@
-#include "nodo.h"
+#include "Nodo.h"
 #include <exception>
 #include <iostream>
 
-nodo::nodo(nodo *L, nodo *R, int max) {
+Nodo::Nodo(Nodo *L, Nodo *R, int max) {
 	this->L = R;
 	this->R = R;
 	this->max = max;
 	this->crrt = 0;
 }
 
-nodo::~nodo(){
+Nodo::~Nodo(){
 	if (L != nullptr) delete(L);
 	if (R != nullptr) delete(R);
 	delete(this);
 }
 
-nodo* nodo::getL()
+Nodo* Nodo::getL()
 {
 	if (this->L == nullptr)
 	{
@@ -24,7 +24,7 @@ nodo* nodo::getL()
 	std::cout << this->L << std::endl;
 	return this->L;
 }
-nodo* nodo::getR()
+Nodo* Nodo::getR()
 {
 	if (this->R == nullptr)
 	{
@@ -32,22 +32,22 @@ nodo* nodo::getR()
 	}
 	return this->R;
 }
-int nodo::getMax()
+int Nodo::getMax()
 {
 	return this->max;
 }
-int nodo::getCrrt(){
+int Nodo::getCrrt(){
 	return this->crrt;
 }
-void nodo::setL(nodo* L){
+void Nodo::setL(Nodo* L){
 	this->L= L;
 }
-void nodo::setR(nodo *R){
+void Nodo::setR(Nodo *R){
 	this->R = R;
 }
-void nodo::setCrrt(int n){
+void Nodo::setCrrt(int n){
 	this->crrt = n;
 }
-void nodo::crrtPP(){
+void Nodo::crrtPP(){
 	this->crrt++;
 }

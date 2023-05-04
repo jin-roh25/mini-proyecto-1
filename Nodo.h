@@ -1,21 +1,21 @@
 #ifndef Nodo_H
 #define Nodo_H
 
-class nodo
+class Nodo
 {
 private:
 	int crrt, max;
-	nodo *L, *R;
+	Nodo *L, *R;
 public:
-	nodo(nodo *, nodo *, int);
-	~nodo();
+	Nodo(Nodo *, Nodo *, int);
+	~Nodo();
 
-	nodo *getL();
-	nodo *getR();
+	Nodo *getL();
+	Nodo *getR();
 	int getMax();int getCrrt();
 
-	void setL(nodo*);
-	void setR(nodo*);
+	void setL(Nodo*);
+	void setR(Nodo*);
 	void setCrrt(int n);
 	void crrtPP();
 };

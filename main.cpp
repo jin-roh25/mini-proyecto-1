@@ -9,7 +9,7 @@ int main(int argc, char const *argv[])
 
     node->setL(node2);
 
-    std::cout << node->getL()->getArray() << std::endl;
+    //std::cout << node->getL()->getArray() << std::endl;
 
     std::cout << ((NodeLeaf*)node->getL())->getArray() << std::endl;
 

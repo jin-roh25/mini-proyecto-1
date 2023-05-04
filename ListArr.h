@@ -1,12 +1,15 @@
 #ifndef ListArr_H
 #define ListArr_H
-#include "nodo.h"
+#include "NodeLeaf.h"
 
 class ListArr
 {
 private:
-    nodo* raiz;
+    Nodo* raiz;
     int sizeArr;
+
+	NodeLeaf *getLeaf(int indice);
+	//void addArray(int indice);
 public:
     ListArr(int);
     ~ListArr();

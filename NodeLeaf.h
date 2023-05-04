@@ -1,13 +1,13 @@
 #ifndef NodeLeaf_H
 #define NodeLeaf_H
-#include "nodo.h"
+#include "Nodo.h"
 
-class NodeLeaf : public nodo
+class NodeLeaf : public Nodo
 {
 private:
     int *array;
 public:
-    NodeLeaf(nodo *, nodo *, int, int);
+    NodeLeaf(Nodo *, Nodo *, int, int);
     ~NodeLeaf();
     int* getArray();
 };
