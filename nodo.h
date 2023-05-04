@@ -6,17 +6,16 @@ class nodo
 private:
 	int crrt, max;
 	nodo *L, *R;
-	int* array;
 public:
 	nodo(nodo *, nodo *, int);
-	nodo(nodo *, nodo *, int, int);
 	~nodo();
 
 	nodo *getL();
 	nodo *getR();
-	int getMax();
+	int getMax();int getCrrt();
 
-	int getCrrt();
+	void setL(nodo*);
+	void setR(nodo*);
 	void setCrrt(int n);
 	void crrtPP();
 };

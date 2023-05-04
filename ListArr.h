@@ -6,6 +6,7 @@ class ListArr
 {
 private:
     nodo* raiz;
+    int sizeArr;
 public:
     ListArr(int);
     ~ListArr();

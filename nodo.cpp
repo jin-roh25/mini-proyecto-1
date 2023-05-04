@@ -1,43 +1,53 @@
 #include "nodo.h"
+#include <exception>
+#include <iostream>
 
 nodo::nodo(nodo *L, nodo *R, int max) {
 	this->L = R;
 	this->R = R;
 	this->max = max;
 	this->crrt = 0;
-	this->array= nullptr;
-}
-
-nodo::nodo(nodo *L, nodo *R, int max, int size) {
-	this->L = R;
-	this->R = R;
-	this->max = max;
-	this->crrt = 0;
-	this->array= new int[size];
 }
 
 nodo::~nodo(){
 	if (L != nullptr) delete(L);
 	if (R != nullptr) delete(R);
-	if (array != nullptr) delete(array);
 	delete(this);
 }
 
-nodo::nodo *getL(){
+nodo* nodo::getL()
+{
+	if (this->L == nullptr)
+	{
+		std::cout << "null pointer"<<std::endl;
+	}
+	std::cout << this->L << std::endl;
 	return this->L;
 }
-nodo::nodo *getR(){
+nodo* nodo::getR()
+{
+	if (this->R == nullptr)
+	{
+		std::cout << "null pointer" << std::endl;
+	}
 	return this->R;
 }
-nodo::int getMax(){
+int nodo::getMax()
+{
 	return this->max;
 }
-nodo::int getCrrt(){
+int nodo::getCrrt(){
 	return this->crrt;
 }
-nodo::void setCrrt(int n){
+void nodo::setL(nodo* L){
+	this->L= L;
+}
+void nodo::setR(nodo *R){
+	this->R = R;
+}
+void nodo::setCrrt(int n){
 	this->crrt = n;
 }
-nodo::void crrtPP(){
+void nodo::crrtPP(){
 	this->crrt++;
 }
