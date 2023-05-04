@@ -7,7 +7,7 @@ private:
 	int crrt, max;
 	Nodo *L, *R;
 public:
-	Nodo(Nodo *, Nodo *, int);
+	Nodo(Nodo *L, Nodo *R, int max);
 	~Nodo();
 
 	Nodo *getL();

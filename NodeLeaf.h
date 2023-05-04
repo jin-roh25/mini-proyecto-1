@@ -7,7 +7,7 @@ class NodeLeaf : public Nodo
 private:
     int *array;
 public:
-    NodeLeaf(Nodo *, Nodo *, int, int);
+    NodeLeaf(Nodo *L, Nodo *R, int maxSize);
     ~NodeLeaf();
     int* getArray();
 };
