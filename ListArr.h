@@ -9,7 +9,9 @@ private:
 	int sizeArr;
 
 	bool isLeaf(Nodo *);
+	Nodo *decend(Nodo *from, int to);
 	NodeLeaf *getLeaf(int indice); // retorna la hoja en la que esta la posicion "indice" (no la hoja numero "indice")
+	void rebuildTree();
 public:
 	ListArr(int);
 	~ListArr();
