@@ -1,5 +1,6 @@
 #include <queue>
 #include <algorithm>
+#include <iostream>
 #include "ListArr.h"
 
 ListArr::ListArr(int maxArr) {
@@ -75,7 +76,7 @@ void ListArr::rebuildTree() {
 	}
 	destroyTree(root);
 
-	root = q.front(); // ¡¡¡¡¡¡MEMORY LEAKS!!!!!! _______________________________
+	root = q.front();
 }
 
 void ListArr::destroyTree(Nodo *node) {
@@ -111,4 +112,38 @@ void ListArr::insert(int num, int ind) {
 
 		rebuildTree();
 	}
+}
+
+void ListArr::print(){
+
+	NodeLeaf* leaf = getLeaf(0);
+	for (int i = 0; i < leaf->getCrrt(); i++)
+	{
+		std::cout << leaf->getArray()[i];
+		if (leaf->getR() != nullptr && i==leaf->getCrrt()-1)
+		{
+			leaf = (NodeLeaf*)leaf->getR();
+			i = -1;
+		}
+		
+	}
+	
+}
+
+bool ListArr::find(int num){
+
+	NodeLeaf *leaf = getLeaf(0);
+	for (int i = 0; i < leaf->getCrrt(); i++)
+	{
+		if(num == leaf->getArray()[i]){
+			return true;
+		}
+		if (i == leaf->getCrrt() - 1 && leaf->getR() != nullptr)
+		{
+			leaf = (NodeLeaf *)leaf->getR();
+			i = -1;
+		}
+
+	}
+	return false;
 }
