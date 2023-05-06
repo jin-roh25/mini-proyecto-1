@@ -9,22 +9,16 @@ Nodo::Nodo(Nodo *L, Nodo *R, int max) {
 	this->crrt = 0;
 }
 
-Nodo::~Nodo(){
-	if (L != nullptr) delete(L);
-	if (R != nullptr) delete(R);
-	delete(this);
-}
-
-Nodo* Nodo::getL()
+Nodo *Nodo::getL()
 {
 	if (this->L == nullptr)
 	{
-		std::cout << "null pointer"<<std::endl;
+		std::cout << "null pointer" << std::endl;
 	}
 	std::cout << this->L << std::endl;
 	return this->L;
 }
-Nodo* Nodo::getR()
+Nodo *Nodo::getR()
 {
 	if (this->R == nullptr)
 	{
@@ -36,18 +30,18 @@ int Nodo::getMax()
 {
 	return this->max;
 }
-int Nodo::getCrrt(){
+int Nodo::getCrrt() {
 	return this->crrt;
 }
-void Nodo::setL(Nodo* L){
-	this->L= L;
+void Nodo::setL(Nodo *L) {
+	this->L = L;
 }
-void Nodo::setR(Nodo *R){
+void Nodo::setR(Nodo *R) {
 	this->R = R;
 }
-void Nodo::setCrrt(int n){
+void Nodo::setCrrt(int n) {
 	this->crrt = n;
 }
-void Nodo::crrtPP(){
+void Nodo::crrtPP() {
 	this->crrt++;
 }

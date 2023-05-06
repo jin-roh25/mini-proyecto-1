@@ -1,31 +1,41 @@
 #include <queue>
+#include <algorithm>
 #include "ListArr.h"
 
 ListArr::ListArr(int maxArr) {
 	this->sizeArr = maxArr;
-	raiz = new NodeLeaf(nullptr, nullptr, maxArr);
+	root = new NodeLeaf(nullptr, nullptr, maxArr);
 }
 
 ListArr::~ListArr() {
-	delete(raiz);
+	delete(root);
 }
 
 bool ListArr::isLeaf(Nodo *nd) {
 	return sizeArr == nd->getMax();
 }
 
-NodeLeaf *ListArr::getLeaf(int ind) {
-	Nodo *nd = raiz;
+Nodo *ListArr::decendOne(Nodo *nd, int *ind) {
+	if (isLeaf(nd)) return nd;
 
-	while (!isLeaf(nd) && nd != nullptr) {
-		if (nd->getL()->getCrrt() > ind) {
-			nd = nd->getL();
-		} else {
-			ind -= nd->getL()->getCrrt();
-			nd = nd->getR();
-		}
+	if (nd->getL()->getCrrt() > *ind) {
+		nd = nd->getL();
+	} else {
+		*ind -= nd->getL()->getCrrt();
+		nd = nd->getR();
 	}
 
+	return nd;
+}
+
+NodeLeaf *ListArr::getLeaf(int ind) {
+	Nodo *nd = root;
+	while (!isLeaf(nd)) nd = decendOne(nd, &ind);
+	return (NodeLeaf *)nd;
+}
+NodeLeaf *ListArr::getLeaf(int *ind) {
+	Nodo *nd = root;
+	while (!isLeaf(nd)) nd = decendOne(nd, ind);
 	return (NodeLeaf *)nd;
 }
 
@@ -63,18 +73,42 @@ void ListArr::rebuildTree() {
 			q.push(new Nodo(nd1, nd2, nd1->getMax() + nd2->getMax()));
 		}
 	}
+	destroyTree(root);
 
-	raiz = q.front(); // ¡¡¡¡¡¡MEMORY LEAKS!!!!!! _______________________________
+	root = q.front(); // ¡¡¡¡¡¡MEMORY LEAKS!!!!!! _______________________________
 }
 
-int ListArr::size() { return raiz->getCrrt(); }
+void ListArr::destroyTree(Nodo *node) {
+
+	if (!isLeaf(node)) {
+		destroyTree(node->getR());
+		destroyTree(node->getL());
+		delete(node);
+	}
+}
+
+int ListArr::size() { return root->getCrrt(); }
 void ListArr::insert_left(int n) { this->insert(n, 0); }
-void ListArr::insert_right(int n) { this->insert(n, raiz->getCrrt() - 1); }
+void ListArr::insert_right(int n) { this->insert(n, root->getCrrt() - 1); }
 
 void ListArr::insert(int num, int ind) {
 	NodeLeaf *nd = getLeaf(ind);
+	for (int i = ind;i < nd->getMax();i++) {
+		std::swap(num, nd->getArray()[i]);
+	}
 
 	if (nd->getCrrt() < nd->getMax()) {
+		nd->crrtPP();
+		for (Nodo *i = root; !isLeaf(i);i = decendOne(i, &ind)) {
+			i->crrtPP();
+		}
+	} else {
+		NodeLeaf *newLeaf = new NodeLeaf(nd, nd->getR(), sizeArr);
+		newLeaf->getArray()[0] = num;
 
+		nd->setR(newLeaf);
+		if (nd->getR() != nullptr) nd->getR()->setL(newLeaf);
+
+		rebuildTree();
 	}
 }

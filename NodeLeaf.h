@@ -11,5 +11,4 @@ public:
     ~NodeLeaf();
     int* getArray();
 };
-
 #endif

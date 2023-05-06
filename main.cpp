@@ -1,23 +1,27 @@
 #include <iostream>
-#include <typeinfo> 
+#include <algorithm>
 #include "NodeLeaf.h"
+#include "ListArr.h"
 
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
 
-	NodeLeaf *node = new NodeLeaf(nullptr, nullptr, 5);
-	NodeLeaf *node2 = new NodeLeaf(nullptr, nullptr, 5);
-	Nodo *nd = new NodeLeaf(nullptr, nullptr, 5);
+    NodeLeaf *node2 = new NodeLeaf(nullptr, nullptr, 5);
+    NodeLeaf *node = new NodeLeaf(nullptr, nullptr, 5);
 
-	node->setL(node2);
+    node->setL(node2);
 
-	cout << ((NodeLeaf *)node->getL())->getArray() << endl;
+    //ListArr* la =new ListArr(5);
 
-	cout << is_same<decltype(node), decltype(node->getL())>() << endl;
+    int a = 69, b = 420;
+    cout << a << "  " << b << endl;
+    swap(a,b);
+    cout << a << "  " << b << endl;
 
-	cout << typeid(*nd).name() << "  " << typeid(*node->getL()).name() << endl;
 
-	return 0;
+    //cout << ((NodeLeaf *)node->getL())->getArray() << endl;
+
+    return 0;
 }

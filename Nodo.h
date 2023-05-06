@@ -8,7 +8,6 @@ private:
 	Nodo *L, *R;
 public:
 	Nodo(Nodo *L, Nodo *R, int max);
-	~Nodo();
 
 	Nodo *getL();
 	Nodo *getR();
