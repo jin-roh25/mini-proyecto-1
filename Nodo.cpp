@@ -3,14 +3,14 @@
 #include <iostream>
 
 Nodo::Nodo(Nodo *L, Nodo *R, int max) {
-	this->L = R;
+	this->L = L;
 	this->R = R;
 	this->max = max;
 	this->crrt = 0;
 }
 
 Nodo::Nodo(Nodo *L, Nodo *R, int crrt, int max){
-	this->L = R;
+	this->L = L;
 	this->R = R;
 	this->max = max;
 	this->crrt = crrt;

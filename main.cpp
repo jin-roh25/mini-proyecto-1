@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < c; i++)
     {
         tree->insert(i+1,i);
-        cout << "*" << tree->size() << endl;
+        cout << "size: " << tree->size() << endl;
     }
     
     tree->print();
