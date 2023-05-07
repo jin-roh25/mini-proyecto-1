@@ -7,24 +7,32 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
+    int b,c,f;
 
+    cout << "Espacio de arreglos: ";
+    cin >> b;
 
-    //ListArr* la =new ListArr(5);
+    ListArr* tree = new ListArr(b);
 
-    ListArr* tree = new ListArr(4);
-    int c;
-
+    cout << "Elementos a insertar: ";
     cin >> c;
 
     for (int i = 0; i < c; i++)
     {
         tree->insert(i+1,i);
-        cout << "size: " << tree->size() << endl;
     }
     
     tree->print();
 
-    //cout << ((NodeLeaf *)node->getL())->getArray() << endl;
+    cout << "Buscar: ";
+    cin >> f;
+    if (tree->find(f))
+    {
+        cout << "está" << endl;
+    }else{
+        cout << "no está" << endl;
+    }
+    
 
     return 0;
 }

@@ -125,12 +125,14 @@ void ListArr::print() {
 	NodeLeaf *leaf = getLeaf(0);
 	for (int i = 0; i < leaf->getCrrt(); i++)
 	{
+		cout << leaf->getArray()[i] << " ";
 		if (leaf->getR() != nullptr && i == leaf->getCrrt() - 1)
 		{
 			leaf = (NodeLeaf *)leaf->getR();
 			i = -1;
 		}
 	}
+	cout << endl;
 }
 
 bool ListArr::find(int num) {
