@@ -3,6 +3,8 @@
 #include <iostream>
 #include "ListArr.h"
 
+using namespace std;
+
 ListArr::ListArr(int maxArr) {
 	this->sizeArr = maxArr;
 	root = new NodeLeaf(nullptr, nullptr, maxArr);
@@ -44,12 +46,13 @@ void ListArr::rebuildTree() {
 	std::queue<Nodo *> q;
 
 	Nodo *nd = getLeaf(0);
+	std::cout << nd << std::endl << std::endl;
 	while (nd != nullptr) {
 		if (nd->getR() == nullptr) {
 			q.push(nd);
 			break;
 		} else {
-			q.push(new Nodo(nd, nd->getR(), sizeArr * 2));
+			q.push(new Nodo(nd, nd->getR(),nd->getCrrt() + nd->getR()->getCrrt(), sizeArr * 2));
 		}
 
 		nd = nd->getR()->getR();
@@ -71,12 +74,13 @@ void ListArr::rebuildTree() {
 			Nodo *nd2 = q.front();
 			q.pop();
 
-			q.push(new Nodo(nd1, nd2, nd1->getMax() + nd2->getMax()));
+			q.push(new Nodo(nd1, nd2, nd1->getCrrt() + nd2->getCrrt(), nd1->getMax() + nd2->getMax()));
 		}
 	}
 	destroyTree(root);
 
 	root = q.front();
+	std::cout<< "+" << root->getCrrt() << std::endl;
 }
 
 void ListArr::destroyTree(Nodo *node) {
@@ -93,10 +97,15 @@ void ListArr::insert_left(int n) { this->insert(n, 0); }
 void ListArr::insert_right(int n) { this->insert(n, root->getCrrt() - 1); }
 
 void ListArr::insert(int num, int ind) {
-	NodeLeaf *nd = getLeaf(ind);
-	for (int i = ind;i < nd->getMax();i++) {
+	int aux= ind;
+	NodeLeaf *nd = getLeaf(&ind);
+	for (int i = ind%(sizeArr+1);i < nd->getMax();i++) {
+		//std::cout<<nd->getArray()[i]<<" ";
 		std::swap(num, nd->getArray()[i]);
+		//std::cout << nd->getArray()[i] << std::endl;
 	}
+	std::cout << "-" << nd->getCrrt() << " " << ind % (sizeArr + 1) << std::endl;
+	ind= aux;
 
 	if (nd->getCrrt() < nd->getMax()) {
 		nd->crrtPP();
@@ -106,6 +115,7 @@ void ListArr::insert(int num, int ind) {
 	} else {
 		NodeLeaf *newLeaf = new NodeLeaf(nd, nd->getR(), sizeArr);
 		newLeaf->getArray()[0] = num;
+		newLeaf->crrtPP();
 
 		nd->setR(newLeaf);
 		if (nd->getR() != nullptr) nd->getR()->setL(newLeaf);
@@ -119,13 +129,13 @@ void ListArr::print(){
 	NodeLeaf* leaf = getLeaf(0);
 	for (int i = 0; i < leaf->getCrrt(); i++)
 	{
-		std::cout << leaf->getArray()[i];
+		std::cout << leaf << " " << leaf->getArray()[i] << " ";
 		if (leaf->getR() != nullptr && i==leaf->getCrrt()-1)
 		{
 			leaf = (NodeLeaf*)leaf->getR();
 			i = -1;
 		}
-		
+		std::cout << std::endl;
 	}
 	
 }

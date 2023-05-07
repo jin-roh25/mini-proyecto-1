@@ -9,21 +9,28 @@ Nodo::Nodo(Nodo *L, Nodo *R, int max) {
 	this->crrt = 0;
 }
 
+Nodo::Nodo(Nodo *L, Nodo *R, int crrt, int max){
+	this->L = R;
+	this->R = R;
+	this->max = max;
+	this->crrt = crrt;
+}
+
 Nodo *Nodo::getL()
 {
 	if (this->L == nullptr)
 	{
 		std::cout << "null pointer" << std::endl;
 	}
-	std::cout << this->L << std::endl;
+	//std::cout << this->L << std::endl;
 	return this->L;
 }
 Nodo *Nodo::getR()
 {
-	if (this->R == nullptr)
+	/*if (this->R == nullptr)
 	{
 		std::cout << "null pointer" << std::endl;
-	}
+	}*/
 	return this->R;
 }
 int Nodo::getMax()

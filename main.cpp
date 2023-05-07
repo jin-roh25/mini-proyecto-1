@@ -8,18 +8,21 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 
-    NodeLeaf *node2 = new NodeLeaf(nullptr, nullptr, 5);
-    NodeLeaf *node = new NodeLeaf(nullptr, nullptr, 5);
-
-    node->setL(node2);
 
     //ListArr* la =new ListArr(5);
 
-    int a = 69, b = 420;
-    cout << a << "  " << b << endl;
-    swap(a,b);
-    cout << a << "  " << b << endl;
+    ListArr* tree = new ListArr(4);
+    int c;
 
+    cin >> c;
+
+    for (int i = 0; i < c; i++)
+    {
+        tree->insert(i+1,i);
+        cout << "*" << tree->size() << endl;
+    }
+    
+    tree->print();
 
     //cout << ((NodeLeaf *)node->getL())->getArray() << endl;
 

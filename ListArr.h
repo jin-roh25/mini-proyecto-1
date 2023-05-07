@@ -13,7 +13,7 @@ private:
 	NodeLeaf *getLeaf(int *index);
 	void rebuildTree();
 	void destroyTree(Nodo *nodeRoot);
-
+ 
 public:
 	ListArr(int);
 	~ListArr();
