@@ -14,15 +14,42 @@ int main(int argc, char const *argv[])
 
     ListArr* tree = new ListArr(b);
 
-    cout << "Elementos a insertar: ";
+    //insert left
+
+    /*
+    cout << "Elemento a insertar: ";
+    cin >> c;
+
+    tree->insert_left(c);
+    */
+
+    //insert right
+
+    ///*
+    cout << "Elemento a insertar: ";
+    cin >> c;
+
+    tree->insert_right(c);
+    //*/
+
+    //find
+    /*
+
+    cout << "Elementos a buscar: ";
+    cin >> c;
+
+
+    */
+
+    /*cout << "Elementos a insertar: ";
     cin >> c;
 
     for (int i = 0; i < c; i++)
     {
         tree->insert(i+1,i);
-    }
+    }*/
     
-    tree->print();
+    /*tree->print();
 
     cout << "Buscar: ";
     cin >> f;
@@ -31,7 +58,7 @@ int main(int argc, char const *argv[])
         cout << "está" << endl;
     }else{
         cout << "no está" << endl;
-    }
+    }*/
     
 
     return 0;

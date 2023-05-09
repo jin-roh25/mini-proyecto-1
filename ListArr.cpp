@@ -10,6 +10,21 @@ ListArr::ListArr(int maxArr) {
 	root = new NodeLeaf(nullptr, nullptr, maxArr);
 }
 
+ListArr::ListArr(int maxArr, int size) {
+	this->sizeArr = maxArr;
+	NodeLeaf *aux = new NodeLeaf(nullptr, nullptr, maxArr);
+	root = aux;
+	for (int i = 0; i < size; i++)
+	{
+		aux->getArray()[i%maxArr];
+		if(i!=0 && i%maxArr==0){
+			aux->setR(new NodeLeaf(aux, nullptr, maxArr));
+			aux = (NodeLeaf*)aux->getR();
+		}
+	}
+	
+}
+
 ListArr::~ListArr() {
 	delete(root);
 }

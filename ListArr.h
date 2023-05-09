@@ -15,7 +15,8 @@ private:
 	void destroyTree(Nodo *nodeRoot);
  
 public:
-	ListArr(int);
+	ListArr(int maxArr);
+	ListArr(int maxArr, int size);
 	~ListArr();
 
 	int size();						   // Retorna la cantidad de elementos almacenados en el ListArr
